@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class SeatSelection {
 	
-	int seatNo;
+	String seatNo;
 	Date date;
 	
 	
-	public int getSeatNo() {
+	public String getSeatNo() {
 		return seatNo;
 	}
-	public void setSeatNo(int seatNo) {
+	public void setSeatNo(String seatNo) {
 		this.seatNo = seatNo;
 	}
 	public Date getDate() {
@@ -23,7 +23,7 @@ public class SeatSelection {
 	
 	
 	
-	public SeatSelection(int seatNo, Date date) {
+	public SeatSelection(String seatNo, Date date) {
 		super();
 		this.seatNo = seatNo;
 		this.date = date;

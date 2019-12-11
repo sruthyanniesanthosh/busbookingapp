@@ -22,7 +22,7 @@ public class Bus {
 	private float price;
 	
 	
-	private  ArrayList <SeatSelection> seats= new ArrayList() ;
+	  ArrayList <SeatSelection> seats= new ArrayList() ;
 	
 	
 	
@@ -54,10 +54,11 @@ public class Bus {
 		return seats;
 	}
 	public void setSeats(SeatSelection seatObj) {
+		System.out.println(seatObj.seatNo);
 		this.seats.add(seatObj);
 	}
-	public ObjectId get_id() {
-		return _id;
+	public String get_id() {
+		return _id.toHexString();
 	}
 	public void set_id(ObjectId _id) {
 		this._id = _id;
