@@ -20,14 +20,21 @@ public class UserService {
 	PasswordEncoder encoder;
 	
 	
-	public boolean create(User user)
+	public boolean create(User user) throws BookingApplicationException
 	{
+		try{
 		user.set_id(ObjectId.get());
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setSecurityqn(user.getSecurityqn());
 		user.setAnswer(user.getAnswer());
 		userRepo.save(user);
 		return true;
+		}
+		catch(DataAccessException e){
+			e.printStackTrace();
+			throw new BookingApplicationException("User Not Found", e );
+		}
+		
 	}
 	
 	

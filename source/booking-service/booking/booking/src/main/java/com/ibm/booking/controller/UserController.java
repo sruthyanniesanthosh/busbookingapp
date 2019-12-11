@@ -38,11 +38,27 @@ public class UserController {
 //USER REGISTRATION
 	@PostMapping(value="/user",consumes = { MediaType.APPLICATION_JSON_VALUE }) 
 	@CrossOrigin("*")
-	public boolean createUser( @Valid @RequestBody User user)
+	public ResponseEntity<ResponseMessage> createUser( @Valid @RequestBody User user) throws BookingApplicationException
 	{
 		
 		boolean x=userService.create(user);
-		return x;
+		ResponseMessage res;
+		
+		 if(x) {
+		
+		res = new ResponseMessage("Success", new String[] {"User added successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(user.get_id()).toUri();
+		return ResponseEntity.created(location).body(res);
+		 }
+		 else
+		 {
+			 res = new ResponseMessage("Failure", new String[] {"User not added"});
+				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+						.buildAndExpand(user.get_id()).toUri();
+				return ResponseEntity.created(location).body(res);
+		 }
+		
 		
 	}
 	
