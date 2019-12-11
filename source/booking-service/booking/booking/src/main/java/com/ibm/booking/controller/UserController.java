@@ -1,5 +1,6 @@
 package com.ibm.booking.controller;
 
+import java.net.URI;
 import java.security.Principal;
 
 import javax.validation.Valid;
@@ -7,6 +8,7 @@ import javax.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ibm.booking.exception.BookingApplicationException;
+import com.ibm.booking.model.ResponseMessage;
 import com.ibm.booking.model.User;
 import com.ibm.booking.service.UserService;
 
@@ -31,7 +36,7 @@ public class UserController {
 	
 	
 //USER REGISTRATION
-	@PostMapping(value="/user",consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value="/user",consumes = { MediaType.APPLICATION_JSON_VALUE }) 
 	@CrossOrigin("*")
 	public boolean createUser( @Valid @RequestBody User user)
 	{
@@ -56,7 +61,7 @@ public class UserController {
 		
 	//USER LOGIN GET USER BY ID
 	@GetMapping(value="/user/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
-	public User getUserById(@PathVariable("id") String id)
+	public User getUserById(@PathVariable("id") String id) throws BookingApplicationException
 	{
 //		log.debug("In user login");
 		return userService.getUser(id);
@@ -66,18 +71,27 @@ public class UserController {
 	//USER EDIT
 	@PutMapping(value="/user/{id}", produces = {MediaType.APPLICATION_JSON_VALUE} , consumes = {MediaType.APPLICATION_JSON_VALUE} )
 	@CrossOrigin("*")
-	public boolean updateUser(@PathVariable ObjectId id, @RequestBody User updatedUser) {
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable ObjectId id, @RequestBody User updatedUser) throws BookingApplicationException {
 		
 		boolean x = userService.update(updatedUser, id);
-		 return x;
-		 
-//		ResponseMessage res;
-//		res = new ResponseMessage("Success", new String[] {"User Updated successfully"});
-//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-//				.buildAndExpand(id).toUri();
-//		return ResponseEntity.created(location).body(res);
+		ResponseMessage res;
 		
+		 if(x) {
+		
+		res = new ResponseMessage("Success", new String[] {"User Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		 }
+		 else
+		 {
+			 res = new ResponseMessage("Failure", new String[] {"User not updated"});
+				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+						.buildAndExpand(id).toUri();
+				return ResponseEntity.created(location).body(res);
+		 }
 	}
+	
 	
 	@DeleteMapping(value="/user/{id}")
 	@CrossOrigin("*")
