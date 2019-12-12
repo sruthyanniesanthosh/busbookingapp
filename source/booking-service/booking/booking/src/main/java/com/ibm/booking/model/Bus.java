@@ -29,7 +29,6 @@ public class Bus {
 	
 	
 	
-	
 	//getters and setters
 	
 	public Time getDeparture() {
