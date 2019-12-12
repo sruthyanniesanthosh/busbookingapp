@@ -2,9 +2,9 @@ package com.ibm.booking.service;
 
 public interface ServiceInterface {
 	
-	public boolean add();
+	public boolean create();
 	public boolean get();
-	public boolean edit();
+	public boolean update();
 	public boolean delete();
 
 }

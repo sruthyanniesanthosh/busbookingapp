@@ -112,8 +112,12 @@ public class User {
 	public String get_id() {
 		return _id.toHexString();
 	}
-	public void set_id(ObjectId _id) {
-		this._id = _id;
+	
+	public ObjectId get_Id(){
+		return _id;
+	}
+	public void set_id(ObjectId string) {
+		this._id = string;
 	}
 
 	public String getName() {

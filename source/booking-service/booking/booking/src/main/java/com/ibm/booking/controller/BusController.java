@@ -70,7 +70,7 @@ public class BusController {
 	@PutMapping(value="bus/{id}")
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateBus(@PathVariable ObjectId id, @RequestBody Bus updatedBus) throws BookingApplicationException {
-	updatedBus.set_id(id);
+		updatedBus.set_id(id);
 		System.out.println("update prop-"+updatedBus);
 		boolean x = busService.update(updatedBus);
 		ResponseMessage res;

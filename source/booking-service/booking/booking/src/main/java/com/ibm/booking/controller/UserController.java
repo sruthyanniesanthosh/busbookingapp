@@ -85,31 +85,32 @@ public class UserController {
 	}
 	
 	//USER EDIT
-	@PutMapping(value="/user/{id}", produces = {MediaType.APPLICATION_JSON_VALUE} , consumes = {MediaType.APPLICATION_JSON_VALUE} )
+	@PutMapping(value="/user/{_id}", produces = {MediaType.APPLICATION_JSON_VALUE} , consumes = {MediaType.APPLICATION_JSON_VALUE} )
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateUser(@PathVariable ObjectId id, @RequestBody User updatedUser) throws BookingApplicationException {
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String _id, @RequestBody User updatedUser) throws BookingApplicationException {
 		
+		User user = userService.getUser(_id);
 		
-		
-		boolean x = userService.update(updatedUser, id);
+		boolean x = userService.update(updatedUser, user.get_Id());
 		ResponseMessage res;
 		
 		 if(x) {
 		
 		res = new ResponseMessage("Success", new String[] {"User Updated successfully"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(id).toUri();
+				.buildAndExpand(_id).toUri();
 		return ResponseEntity.created(location).body(res);
 		 }
 		 else
 		 {
 			 res = new ResponseMessage("Failure", new String[] {"User not updated"});
 				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-						.buildAndExpand(id).toUri();
+						.buildAndExpand(_id).toUri();
 				return ResponseEntity.created(location).body(res);
 		 }
 	}
 	
+	//USER DELETE
 	
 	@DeleteMapping(value="/user/{id}")
 	@CrossOrigin("*")
@@ -136,6 +137,33 @@ public class UserController {
 		 }
 		 
 	
+	}
+	
+	
+	//Forgot Password
+	
+	@PutMapping(value="forgot/{id}")
+	@CrossOrigin("*")
+	public ResponseEntity<ResponseMessage> updateUser(@PathVariable String id, @RequestBody String password)  throws BookingApplicationException{
+		
+		boolean x = userService.updatePassword(id,password);
+		ResponseMessage res;
+		
+		if(x) {
+		res = new ResponseMessage("Success", new String[] {"Password Updated successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		}
+		
+		else
+		{
+			res = new ResponseMessage("Failure", new String[] {"Password not updated"});
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(id).toUri();
+			return ResponseEntity.created(location).body(res);
+		}
+		
 	}
 	
 

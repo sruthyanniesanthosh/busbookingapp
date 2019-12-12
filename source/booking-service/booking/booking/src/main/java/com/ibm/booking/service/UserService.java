@@ -45,9 +45,9 @@ public class UserService {
 		
 	}
 	
-	public boolean update(User updatedUser, ObjectId _id) throws BookingApplicationException {
+	public boolean update(User updatedUser, ObjectId objectId) throws BookingApplicationException {
 	try {	
-		updatedUser.set_id(_id);
+		updatedUser.set_id(objectId);
 		
 		userRepo.save(updatedUser);
 		return true;
@@ -75,8 +75,25 @@ public class UserService {
 			
 		}
 	}
+
+
+	public boolean updatePassword(String name, String password) throws BookingApplicationException{
+		// TODO Auto-generated method stub
+		try {
+		User user = userRepo.findByName(name);
+		user.setPassword(encoder.encode(password));
+		userRepo.save(user);
+		return true;
+	}
+		
+		
+		catch(DataAccessException e) {
+			e.printStackTrace();
+			throw new BookingApplicationException("User Not Found", e );
+			
+		}
 	
-	
+}
 }
 
 

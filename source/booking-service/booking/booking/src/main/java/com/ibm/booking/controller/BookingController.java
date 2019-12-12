@@ -78,14 +78,14 @@ public class BookingController {
 			 
 			
 			
-		res = new ResponseMessage("Success", new String[] {"Seats added successfully"});
+		res = new ResponseMessage("Success", new String[] {"Seats added successfully, Booking successful!"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(bus.get_id()).toUri();
 		return ResponseEntity.created(location).body(res);
 		}
 		else
 		{
-			res = new ResponseMessage("Failure", new String[] {"Seats not added"});
+			res = new ResponseMessage("Failure", new String[] {"Seats not added, Booking not done"});
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(id).toUri();
 			return ResponseEntity.created(location).body(res);
