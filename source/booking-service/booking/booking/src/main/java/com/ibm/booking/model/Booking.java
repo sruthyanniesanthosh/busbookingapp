@@ -14,6 +14,18 @@ public class Booking {
     private String source;
     private String destination;
     private Date travelDate;
+    private String seatNo;
+    
+    
+    
+    
+    
+	public String getSeatNo() {
+		return seatNo;
+	}
+	public void setSeatNo(String seatNo) {
+		this.seatNo = seatNo;
+	}
 	public ObjectId get_id() {
 		return _id;
 	}
@@ -58,6 +70,9 @@ public class Booking {
 		this.source = source;
 		this.destination = destination;
 		this.travelDate = travelDate;
+	}
+	public Booking() {
+		super();
 	}
     
     
