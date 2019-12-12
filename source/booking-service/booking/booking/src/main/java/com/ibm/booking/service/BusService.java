@@ -44,10 +44,17 @@ public class BusService {
 
 
 
-	public void update(Bus updatedBus) {
+	public boolean update(Bus updatedBus) throws BookingApplicationException{
 		// TODO Auto-generated method stub
-		
+		try {
 		busRepo.save(updatedBus);
+		return true;}
+		
+		catch(DataAccessException e) {
+			e.printStackTrace();
+			throw new BookingApplicationException("Bus Not Found", e );
+			
+		}
 		
 	}
 

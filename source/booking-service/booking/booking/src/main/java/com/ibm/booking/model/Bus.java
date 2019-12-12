@@ -22,7 +22,7 @@ public class Bus {
 	private float price;
 	
 	
-	  ArrayList <SeatSelection> seats= new ArrayList() ;
+	private   ArrayList <SeatSelection> seats= new ArrayList() ;
 	
 	
 	

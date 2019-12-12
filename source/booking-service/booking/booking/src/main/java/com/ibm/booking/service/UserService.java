@@ -60,11 +60,22 @@ public class UserService {
 	}
 
 
-	public boolean delete(String name) {
+	public boolean delete(String name) throws BookingApplicationException {
+		try {
 		// TODO Auto-generated method stub
 		Long x = userRepo.deleteByName(name);
+		if(x!=null)
 		return true;
+		else
+			return false;
 	}
+		catch(DataAccessException e) {
+			e.printStackTrace();
+			throw new BookingApplicationException("User Not Found", e );
+			
+		}
+	}
+	
 	
 }
 

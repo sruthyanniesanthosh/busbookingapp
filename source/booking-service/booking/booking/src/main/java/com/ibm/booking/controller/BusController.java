@@ -57,7 +57,7 @@ public class BusController {
 		 }
 		 else
 		 {
-			 res = new ResponseMessage("Failure", new String[] {"User not added"});
+			 res = new ResponseMessage("Failure", new String[] {"Bus not added"});
 				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 						.buildAndExpand(bus.get_id()).toUri();
 				return ResponseEntity.created(location).body(res);
@@ -69,17 +69,28 @@ public class BusController {
 	
 	@PutMapping(value="bus/{id}")
 	@CrossOrigin("*")
-	public ResponseEntity<ResponseMessage> updateBus(@PathVariable ObjectId id, @RequestBody Bus updatedBus) {
+	public ResponseEntity<ResponseMessage> updateBus(@PathVariable ObjectId id, @RequestBody Bus updatedBus) throws BookingApplicationException {
 	updatedBus.set_id(id);
 		System.out.println("update prop-"+updatedBus);
-		busService.update(updatedBus);
+		boolean x = busService.update(updatedBus);
 		ResponseMessage res;
+		if(x) {
 		res = new ResponseMessage("Success", new String[] {"Bus Updated successfully"});
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(id).toUri();
 		return ResponseEntity.created(location).body(res);
+		}
+		else
+		{
+			res = new ResponseMessage("Failure", new String[] {"Bus not updated"});
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(id).toUri();
+			return ResponseEntity.created(location).body(res);
+		}
+		
 		
 	}
+		
 	
 }
 

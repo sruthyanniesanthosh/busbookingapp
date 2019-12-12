@@ -89,6 +89,8 @@ public class UserController {
 	@CrossOrigin("*")
 	public ResponseEntity<ResponseMessage> updateUser(@PathVariable ObjectId id, @RequestBody User updatedUser) throws BookingApplicationException {
 		
+		
+		
 		boolean x = userService.update(updatedUser, id);
 		ResponseMessage res;
 		
@@ -111,10 +113,28 @@ public class UserController {
 	
 	@DeleteMapping(value="/user/{id}")
 	@CrossOrigin("*")
-	public boolean deleteUser(@PathVariable String id) {
+	public ResponseEntity<ResponseMessage> deleteUser(@PathVariable String id) throws BookingApplicationException {
 		
 		boolean x = userService.delete(id);
-		 return x;
+		
+		
+		ResponseMessage res;
+		
+		 if(x) {
+		
+		res = new ResponseMessage("Success", new String[] {"User deleted successfully"});
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(id).toUri();
+		return ResponseEntity.created(location).body(res);
+		 }
+		 else
+		 {
+			 res = new ResponseMessage("Failure", new String[] {"User not deleted"});
+				URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+						.buildAndExpand(id).toUri();
+				return ResponseEntity.created(location).body(res);
+		 }
+		 
 	
 	}
 	

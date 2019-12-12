@@ -9,21 +9,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class User {
 	@Id
-	ObjectId _id;
+	private ObjectId _id;
 	@Indexed(unique=true)
-	String name;
-	String password;
-	String firstName;
-	String lastName;
-	String email;
-	long  contact;
-	String role;
-	String city;
-	String country;
-	String state;
-	int pincode;
-	String securityqn;
-	String answer;
+	private String name;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private long  contact;
+	private String role;
+	private String city;
+	private String country;
+	private String state;
+	private int pincode;
+	private String securityqn;
+	private String answer;
 	
 		
 		
