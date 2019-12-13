@@ -10,6 +10,7 @@ import User from './User'
 import Verify from './Verify'
 import ResetPwd from './ResetPwd'
 import Profile from './Profile'
+import BookSeats from './BookSeats'
 
 
 
@@ -27,7 +28,7 @@ function App() {
           <Route path="/verify" component={Verify} />
           <Route path="/resetPassword" component={ResetPwd} />
           <Route path="/profile" component={Profile} />
-          
+          <Route path="/bookSeats" component={BookSeats} />
           <Footer />
         </div>
       </Router>

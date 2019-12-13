@@ -54,12 +54,10 @@ class SignIn extends Component {
                         <label><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" value={this.state.password} name="password" onChange={this.handleChange} required />
                         <button type="submit">Login</button>
-
-                    </div>
-                    <div className="container">
                         <span className="psw"><a href="/signUp">Register?</a></span>
                         <span className="rg"><a href="/user">Forgot password?</a></span>
                     </div>
+                    
                 </form>
             </div>
 

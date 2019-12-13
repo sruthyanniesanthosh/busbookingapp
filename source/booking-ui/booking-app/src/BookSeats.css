@@ -1,0 +1,49 @@
+#select{
+    width: 100px;
+   text-align: center;
+}
+.booksheat{
+    text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  width: 600px;
+  margin: auto;
+}
+
+.grid td {
+  width: 70px;
+  height: 40px;
+  padding: 10px 10px;
+  border: 2px solid black;
+  text-align: center;
+  
+  float: left;
+  margin: 5px;
+}
+
+.reserved {
+  background: green;
+  color: #fff;
+  display: inline-block;
+}
+
+.reserved::after {
+  content: 'RESERVED'
+}
+
+.available::after {
+  content: 'AVAILABLE'
+}
+
+.available {
+  color: #333;
+}
+
+li {
+  list-style: none;
+}

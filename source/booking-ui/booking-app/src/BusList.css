@@ -1,8 +1,5 @@
-#title {
-    text-align: center;
-    font-family: arial, sans-serif;
-  }
-  
+  /* BusList css  styling*/
+
   #table {
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -11,22 +8,13 @@
     width: 100%;
   }
   
-  #data td, #data th {
+  #data td{
     border: 1px solid #ddd;
     padding: 8px;
   }
-  
-  #students tr:nth-child(even){background-color: #f2f2f2;}
-  
-  #students tr:hover {background-color: #ddd;}
-  
-  #students th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-  }
+
+  /* Bus css styling */
+
   #ip{
       height: 50px;
       width: 280px;

@@ -33,7 +33,6 @@ import Booking from './Booking'
             const bookingDetails=this.state.details.map(item=><Booking key={item._id} item={item}/>)
             return (
                 <div>
-
                    <h3> Bookings </h3>
                    <div>
                     {bookingDetails}

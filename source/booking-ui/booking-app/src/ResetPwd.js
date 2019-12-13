@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import './SignUp.css'
-import { hashHistory } from 'react-router';
 
 class ResetPwd extends React.Component {
 
@@ -21,9 +20,6 @@ class ResetPwd extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        // alert("submitted Successfully");
-        // console.log(this.state)
-        
         if(this.state.password === this.state.rePassword)
         {
             const pwd={
@@ -35,13 +31,9 @@ class ResetPwd extends React.Component {
                 this.setState({
                     val:"Yes"
                 })
-                // hashHistory.push('./signIn')
-            })
-            
+                
+            })      
         }
-       
-
-
     }
 
     handleClick = event => {
@@ -51,6 +43,7 @@ class ResetPwd extends React.Component {
         })
 
     }
+    
     render() {
         return (
             <div>
