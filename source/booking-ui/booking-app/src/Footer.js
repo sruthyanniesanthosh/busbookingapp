@@ -1,15 +1,13 @@
 import React,{Component} from 'react';
-import {Link} from "react-router-dom"
+import './Footer.css'
 
-import './App.css'
 class Footer extends Component{
   render(){
     return (
-    <div>
+    <div class="footer">
       
-       <Link to="/signIn" activeclassname="active">Sign Out</Link>
-  
       
+      <h1>This is the footer</h1>
     </div>
     )
   }

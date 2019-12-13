@@ -16,14 +16,12 @@ class BusList extends React.Component {
    }
    handleSubmit(event) {
       event.preventDefault()
-      console.log(this.state.source)
-      console.log(this.state.destination)
       axios.get(`http://localhost:8081/bus?source=`+this.state.source+`&destination=`+this.state.destination)
           .then(res => {
              this.setState({
                 details:res.data
              })
-            
+            console.log("details"+this.state.details)
           })
    }
    handleChange=event=>{

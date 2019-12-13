@@ -1,14 +1,16 @@
-import React,{Component} from 'react';
-import {NavLink} from 'react-router-dom';
+import React, { Component } from 'react';
 import './Header.css'
 
-class Header extends Component{
-  render(){
+class Header extends Component {
+  render() {
     return (
-    <header>
-      <NavLink to="/signIn">Sign In</NavLink> 
-      <NavLink to="/signUp">Sign Up</NavLink> 
-    </header>
+        <div class="header">
+          <a href="/" className="logo">GMJ Travels</a>
+          <div class="header-right">
+            <a  href="/">Home</a>
+            <a href="/signIn">signIn</a>
+          </div>
+        </div>
     )
   }
 }

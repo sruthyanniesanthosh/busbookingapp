@@ -3,14 +3,16 @@ import axios from 'axios';
 import './SignUp.css'
 
 class SignUp extends React.Component {
-    
-   state = {
+
+    state = {
         name: "",
         password: "",
-        firstName:"",
+        firstName: "",
         lastName: "",
-        email:""
-        
+        email: "",
+        securityqn: "",
+        answer: ""
+
     }
 
 
@@ -25,22 +27,22 @@ class SignUp extends React.Component {
         event.preventDefault();
         alert("submitted Successfully");
         console.log(this.state)
-        let path1=`signIn`
-                this.props.history.push(path1)
+        let path1 = `signIn`
+        this.props.history.push(path1)
         axios.post(`http://localhost:8081/user`, this.state)
             .then(res => {
                 console.log(res);
-                
+
             })
 
-            
+
     }
 
-    handleClick = event =>{
+    handleClick = event => {
         event.preventDefault();
-        let path=``
+        let path = ``
         this.props.history.push(path)
-       
+
     }
     render() {
         return (
@@ -54,9 +56,23 @@ class SignUp extends React.Component {
                         <label><b>Last Name</b></label>
                         <input type="text" placeholder="Enter LastName" name="lastName" value={this.state.lastName} onChange={this.handleChange} required />
                         <label><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} required />                    
+                        <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleChange} required />
                         <label><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handleChange} required />
+                        <label><b>Security Question</b></label>
+                        <select
+                            value={this.state.securityqn}
+                            onChange={this.handleChange}
+                            name="securityqn"
+                        >
+                            <option name="" value="sq">--Select a Security Question--</option>   
+                            <option name="" value="coor">what is your fav color?</option>
+                            <option value="movie">what is your fav movie?</option>
+                            <option value="pet">what is your fav pet?</option>
+                            <option value="hero">who is your fav hero?</option>
+                        </select><br></br><br></br>
+                        <label><b>Answer</b></label>
+                        <input type="text" placeholder="Enter Answer" name="answer" value={this.state.answer} onChange={this.handleChange} required/>
                         <div className="clearfix">
                             <button type="button" onClick={this.handleClick} className="cancelbtn">Cancel</button>
                             <button type="submit" className="signupbtn">Sign Up</button>

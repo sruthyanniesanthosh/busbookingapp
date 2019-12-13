@@ -46,7 +46,7 @@ class SignIn extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleClick} className="reg">
+                <form onSubmit={this.handleClick} className="form1">
                     <div className="container2">
                         <label><b>Username</b></label>
                         <input type="text" placeholder="Enter Username" value={this.state.name} name="name" onChange={this.handleChange} required />
@@ -57,7 +57,7 @@ class SignIn extends Component {
                     </div>
                     <div className="container">
                         <span className="psw"><a href="/signUp">Register?</a></span>
-                        <span className="rg"><a href="/">Forgot password?</a></span>
+                        <span className="rg"><a href="/user">Forgot password?</a></span>
                     </div>
                 </form>
             </div>
