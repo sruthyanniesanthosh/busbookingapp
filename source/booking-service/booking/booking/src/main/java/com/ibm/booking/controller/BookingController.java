@@ -2,6 +2,7 @@ package com.ibm.booking.controller;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.bson.types.ObjectId;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ibm.booking.exception.BookingApplicationException;
+import com.ibm.booking.model.Booking;
 import com.ibm.booking.model.Bus;
 import com.ibm.booking.model.ResponseMessage;
 import com.ibm.booking.model.SeatSelection;
+import com.ibm.booking.model.User;
 import com.ibm.booking.service.BookingService;
 import com.ibm.booking.service.BusService;
 
@@ -92,5 +96,15 @@ public class BookingController {
 		}
 		
 	}
+	
+	//USER LOGIN GET USER BY ID
+		@GetMapping(value="/book/{id}",produces = {MediaType.APPLICATION_JSON_VALUE})
+		public List <Booking> getBookingByName(@PathVariable("id") String id) throws BookingApplicationException
+		{
+//			log.debug("In user login");
+			return bookingService.getBooking(id);
+			
+		}
+		
 
 }

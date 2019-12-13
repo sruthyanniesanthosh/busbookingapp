@@ -1,5 +1,7 @@
 package com.ibm.booking.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import com.ibm.booking.exception.BookingApplicationException;
 import com.ibm.booking.model.Booking;
 import com.ibm.booking.model.Bus;
 import com.ibm.booking.model.SeatSelection;
+import com.ibm.booking.model.User;
 import com.ibm.booking.repository.BookingRepository;
 
 @Service
@@ -45,4 +48,11 @@ public class BookingService {
 	
 
 }
+
+	public List <Booking> getBooking(String name) {
+		// TODO Auto-generated method stub
+		
+		return bookingRepo.getByUserName(name);
+		
+	}
 }

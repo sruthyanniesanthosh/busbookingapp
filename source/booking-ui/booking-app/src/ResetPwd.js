@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './SignUp.css'
-import { hashHistory } from 'react-router;'
+import { hashHistory } from 'react-router';
 
 class ResetPwd extends React.Component {
 

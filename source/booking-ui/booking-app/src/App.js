@@ -9,6 +9,8 @@ import BusList from './BusList'
 import User from './User'
 import Verify from './Verify'
 import ResetPwd from './ResetPwd'
+import Profile from './Profile'
+
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path="/user" component={User} />
           <Route path="/verify" component={Verify} />
           <Route path="/resetPassword" component={ResetPwd} />
+          <Route path="/profile" component={Profile} />
+          
           <Footer />
         </div>
       </Router>

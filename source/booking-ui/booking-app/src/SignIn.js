@@ -22,6 +22,7 @@ class SignIn extends Component {
                 console.log(response.status);
                 if (response.status === 200) {
                     this.props.history.push(path1)
+                    sessionStorage.setItem("username",this.state.name)
                 }
                 else {
                     alert("username or password incorrect")

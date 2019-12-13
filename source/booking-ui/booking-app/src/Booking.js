@@ -1,25 +1,23 @@
-import React from "react"
-import './BusList.css'
+import React from 'react';
 
-
-class Bus extends React.Component{
+class Booking extends React.Component{
 
     constructor(props){
         super(props);
        
     }
-
-   
     renderTableData() {
 
            return (
               <tr key={this.props.item._id} id="data">
                   {console.log(this.props)}
-                 <td>BusName:{this.props.item.busName}</td>
+                 <td>Booking Id:{this.props.item.busId}</td>
                  <td>Source:{this.props.item.source}</td>
                  <td>Destination:{this.props.item.destination}</td>
-                <td>price:{this.props.item.price}</td>
-                <td><button>Book now</button></td>
+                
+                <td>Seat Number : {this.props.item.seatNo} </td>
+           <td>Travel Date : { this.props.item.travelDate} </td>
+                
               </tr>
            )
         }
@@ -35,6 +33,6 @@ class Bus extends React.Component{
             </div>
         )
 }
-
 }
-export default Bus
+export default Booking;
+

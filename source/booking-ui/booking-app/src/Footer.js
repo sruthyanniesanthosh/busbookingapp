@@ -7,7 +7,7 @@ class Footer extends Component{
     <div class="footer">
       
       
-      <h1>This is the footer</h1>
+      <h3>GMJ TRAVELS LTD</h3>
     </div>
     )
   }

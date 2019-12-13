@@ -13,6 +13,7 @@ class BusList extends React.Component {
       
       }
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleClick= this.handleClick.bind(this);
    }
    handleSubmit(event) {
       event.preventDefault()
@@ -32,6 +33,11 @@ class BusList extends React.Component {
       
    }
 
+   handleClick()
+   {
+      this.props.history.push('/profile')
+   }
+
    render() {
 
       const busDetails=this.state.details.map(item=><Bus key={item._id} item={item}/>)
@@ -41,9 +47,10 @@ class BusList extends React.Component {
             <input type="text" id="ip" placeholder="Source" name="source" value={this.state.source} onChange={this.handleChange} />
             <input type="text" id="ip" placeholder="Destination" name="destination" value={this.state.destination} onChange={this.handleChange} />
             <input type="date" id="ip" />
-            <button id="ip">Search</button>
+            <button id="ip" >Search</button>
             {busDetails}
             </form>
+            <button onClick={this.handleClick}>Profile</button>
             
          </div>
       )
